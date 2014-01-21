@@ -1,0 +1,19 @@
+{
+    "name": "Skinny",
+    "version": "0.2.0",
+    "description": "Super simple and full featured application framework",
+    "author": "Geometria Lab",
+    "contributors": [
+        { "name": "Ivan Shumkov", "email": "ivan@shumkov.ru" }
+    ],
+    "main": "./skinny.js",
+    "repository": {
+        "type" : "git",
+        "url"  : "https://github.com/skinny/skinny.git"
+    },
+    "dependencies" : {
+    },
+    "devDependencies": {
+    },
+    "engines" : [ "node >=0.10" ]
+}
