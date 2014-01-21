@@ -9,7 +9,7 @@
     "main": "./skinny.js",
     "repository": {
         "type" : "git",
-        "url"  : "https://github.com/skinny/skinny.git"
+        "url"  : "https://github.com/skinny-bones/skinny.git"
     },
     "dependencies" : {
     },
