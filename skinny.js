@@ -11,6 +11,10 @@ Skinny.prototype.attach = function(bone, options) {
     bone(this, options);
 };
 
+Skinny.prototype.newSkinny = function() {
+    return new Skinny();
+};
+
 //skinny.setMaxListeners(0);
 
 module.exports = new Skinny();
