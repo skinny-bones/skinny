@@ -1,19 +1,43 @@
-var events = require('events'),
-    util   = require('util');
+"use strict";
 
-function Skinny() {
-    events.EventEmitter.call(this);
+const events = require('events');
+
+class Skinny extends events.EventEmitter {
+    attach(bone, options, path) {
+        if (Array.isArray(bone)) {
+            let bones = bone;
+            for (let bone of bones) {
+                let boneOptions;
+
+                if (options && typeof bone === 'string') {
+                    boneOptions = options[bone];
+                }
+
+                attachSkinnyBone(this, bone, boneOptions, path);
+            }
+        } else {
+            attachSkinnyBone(this, bone, options, path);
+        }
+    }
+
+    newSkinny() {
+        return new Skinny();
+    }
 }
 
-util.inherits(Skinny, events.EventEmitter);
+function attachSkinnyBone(skinny, bone, options, path) {
+    if (typeof bone === 'string') {
+        bone = require(path ?  path + '/' + bone : `skinny-bone-${camelCaseToDash(bone)}`);
+    }
 
-Skinny.prototype.attach = function(bone, options) {
-    bone(this, options);
-};
+    bone(skinny, options);
+}
 
-Skinny.prototype.newSkinny = function() {
-    return new Skinny();
-};
+function camelCaseToDash(string) {
+    return string.replace(/([a-z][A-Z])/g, function (l) {
+        return l[0] + '-' + l[1].toLowerCase()
+    });
+}
 
 //skinny.setMaxListeners(0);
 
