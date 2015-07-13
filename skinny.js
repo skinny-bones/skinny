@@ -23,6 +23,15 @@ class Skinny extends events.EventEmitter {
     newSkinny() {
         return new Skinny();
     }
+
+    reset() {
+        this.removeAllListeners();
+        for (let property in this) {
+            if (this.hasOwnProperty(property)) {
+                delete this[property];
+            }
+        }
+    }
 }
 
 function attachSkinnyBone(skinny, bone, options, path) {
